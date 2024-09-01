@@ -30,30 +30,6 @@ Data from these sources were merged and manipulated using SQL Server Management 
 - **Merging Datasets**: The `bike_share_yr_0` and `bike_share_yr_1` datasets were combined using a `UNION` operation to create a comprehensive dataset covering both years.
 - **Data Calculation**: Revenue and profit were calculated by multiplying the number of riders by the price and subtracting the cost of goods sold (COGS) from the resulting revenue.
 
-Example SQL Query:
-
-```sql
-WITH cte AS (
-    SELECT * FROM bike_share_yr_0 
-    UNION ALL
-    SELECT * FROM bike_share_yr_1
-)
-SELECT 
-    dteday,
-    season,
-    a.yr,
-    weekday,
-    hr,
-    rider_type,
-    riders,
-    price,
-    COGS,
-    riders * price AS revenue,
-    riders * price - COGS AS profit
-FROM cte a
-LEFT JOIN cost_table b ON a.yr = b.yr;
-
-
 ## Dashboard Visualization
 
 The data was visualized in Power BI to create an interactive dashboard that allows users to explore various metrics and trends in the bike-sharing data. The dashboard includes:
@@ -75,5 +51,4 @@ These visualizations help stakeholders make data-driven decisions to optimize op
 2. **Run SQL Queries**: Use the provided SQL queries to merge and calculate necessary metrics.
 3. **Load Data into Power BI**: Import the resulting data into Power BI for visualization.
 4. **Explore the Dashboard**: Interact with the dashboard to explore various metrics and gain insights into the bike-sharing service.
-
 
